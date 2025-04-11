@@ -2,6 +2,7 @@ import os
 from spyne import Application, rpc, ServiceBase, Unicode, Integer, ComplexModel, Array
 from spyne.protocol.soap import Soap11
 from spyne.server.wsgi import WsgiApplication
+from wsgiref.simple_server import make_server
 
 
 class ResultadoExamenCPUCursoRptaTO(ComplexModel):
