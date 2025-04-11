@@ -180,7 +180,7 @@ application = Application(
 
 if __name__ == '__main__':
     from wsgiref.simple_server import make_server
-    print("Servicio SOAP corriendo en http://localhost:8000")
+    print("Servicio SOAP corriendo en http://0.0.0.0:8000")
     wsgi_app = WsgiApplication(application)
     servidor = make_server('0.0.0.0', 8000, wsgi_app)
     servidor.serve_forever()
