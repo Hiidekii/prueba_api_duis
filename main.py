@@ -1,3 +1,4 @@
+import os
 from spyne import Application, rpc, ServiceBase, Unicode, Integer, ComplexModel, Array
 from spyne.protocol.soap import Soap11
 from spyne.server.wsgi import WsgiApplication
@@ -141,7 +142,9 @@ application = Application(
 wsgi_application = WsgiApplication(application)
 
 if __name__ == '__main__':
-    from wsgiref.simple_server import make_server
-    server = make_server('localhost', 8000, wsgi_application)
-    print("Starting server...")
+    # Obtener el puerto desde la variable de entorno proporcionada por Railway
+    port = int(os.environ.get('PORT', 8000))  # Si no hay variable, usar 8000 por defecto
+    # Hacer que el servidor escuche en todas las interfaces (0.0.0.0)
+    server = make_server('0.0.0.0', port, wsgi_application)
+    print(f"Starting server on port {port}...")
     server.serve_forever()
